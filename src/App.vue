@@ -2,14 +2,6 @@
   <div>
     <router-view></router-view>
     <hr/>
-    <div>
-      <!--相当于a标签，下面切换的时候上面会变 -->
-      <router-link to="/money">记账</router-link>
-      |
-      <router-link to="/labels">标签</router-link>
-      |
-      <router-link to="/statistics">统计</router-link>
-    </div>
   </div>
 </template>
 

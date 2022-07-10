@@ -1,10 +1,13 @@
 <template>
-  <div>Money首页</div>
+  <div>
+    Money首页
+    <Nav/>
+  </div>
 </template>
 
 <script lang="ts">
 export default {
-  name: 'Money'
+  name: 'Money',
 };
 </script>
 
