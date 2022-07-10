@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="nav">
     <!--相当于a标签，下面切换的时候上面会变 -->
     <router-link to="/money">记账</router-link>
     |
@@ -16,5 +16,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+  .nav{border: 1px solid red}
 </style>
