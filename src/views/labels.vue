@@ -1,7 +1,8 @@
 <template>
   <div>
-    labels首页
-    <Nav/>
+    <Layout>
+      <p>labels</p>
+    </Layout>>
   </div>
 </template>
 
@@ -10,7 +11,3 @@ export default {
   name: 'labels',
 };
 </script>
-
-<style lang="scss" scoped>
-
-</style>

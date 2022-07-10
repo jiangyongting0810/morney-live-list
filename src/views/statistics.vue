@@ -1,7 +1,8 @@
 <template>
   <div>
-    statistics首页
-    <Nav/>
+    <Layout>
+      <p>statistics</p>
+    </Layout>>
   </div>
 </template>
 
@@ -10,7 +11,3 @@ export default {
   name: 'statistics',
 };
 </script>
-
-<style lang="scss" scoped>
-
-</style>
