@@ -10,6 +10,14 @@
   padding: 0;
   box-sizing: border-box;
 }
+body{
+  line-height: 1.5;
+}
+a{
+  text-decoration: none;
+  //继承
+  color:inherit;
+}
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -21,11 +29,9 @@
 
 #nav {
   padding: 30px;
-
   a {
     font-weight: bold;
     color: #2c3e50;
-
     &.router-link-exact-active {
       color: #42b983;
     }
