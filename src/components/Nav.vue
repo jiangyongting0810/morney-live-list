@@ -18,13 +18,13 @@
 
 <script lang="ts">
 
-
 export default {
   name: 'Nav'
 };
 </script>
 
 <style lang="scss" scoped>
+@import'~@/assets/style/helper.scss';
 //nav ,nav里面有item
 nav {
   display: flex;
@@ -45,8 +45,9 @@ nav {
 
     }
   }
-  > .item.selected{
-    color: blue;
+
+  > .item.selected {
+    color: $color-highlight;
   }
 }
 </style>
