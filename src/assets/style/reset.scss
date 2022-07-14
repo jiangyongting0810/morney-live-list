@@ -8,3 +8,13 @@ a{
   //继承
   color:inherit;
 }
+ul,ol{
+  list-style: none;
+}
+button,input{
+  font: inherit;
+}
+//输入框的黄线
+:focus{
+  outline: none;
+}
