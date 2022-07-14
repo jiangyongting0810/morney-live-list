@@ -2,37 +2,54 @@
   <div>
     <ul class="types">
       <li :class="type === '-'  && 'selected'"
-      @click="selectType('-')">支出</li>
+          @click="selectType('-')">支出
+      </li>
       <li :class="type === '+' &&'selected'"
-      @click="selectType('+')">收入</li>
+          @click="selectType('+')">收入
+      </li>
     </ul>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'Types',
-  props: ['xxx'],
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  data() {
-    return {
-      type: '-'
+<script lang="ts">
+import Vue from 'vue';
+import {Component} from 'vue-property-decorator';
+
+@Component
+export default class Types extends Vue {
+  type = '-';
+
+  selectType(type: string) {
+    if (type !== '-' && type !== '+') {
+      throw new Error('type is unknown');
     }
-  },
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  mounted() {
-    console.log(this.xxx)
-  },
-  methods: {
-    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-    selectType(type) {
-      if (type !== '-' && type !== '+'){
-        throw new Error('type is unknown')
-      }
-      this.type = type
-    }
+    this.type = type;
   }
-};
+}
+
+// export default {
+//   name: 'Types',
+//   props: ['xxx'],
+//   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+//   data() {
+//     return {
+//       type: '-'
+//     }
+//   },
+//   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+//   mounted() {
+//     console.log(this.xxx)
+//   },
+//   methods: {
+//     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+//     selectType(type) {
+//       if (type !== '-' && type !== '+'){
+//         throw new Error('type is unknown')
+//       }
+//       this.type = type
+//     }
+//   }
+// };
 </script>
 
 <style lang="scss" scoped>
