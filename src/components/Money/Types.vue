@@ -17,8 +17,8 @@ import {Component} from 'vue-property-decorator';
 
 @Component
 export default class Types extends Vue {
-  type = '-';
-
+  type = '-';//'-'表示支出，'+'表示收入
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   selectType(type: string) {
     if (type !== '-' && type !== '+') {
       throw new Error('type is unknown');
@@ -26,30 +26,6 @@ export default class Types extends Vue {
     this.type = type;
   }
 }
-
-// export default {
-//   name: 'Types',
-//   props: ['xxx'],
-//   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-//   data() {
-//     return {
-//       type: '-'
-//     }
-//   },
-//   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-//   mounted() {
-//     console.log(this.xxx)
-//   },
-//   methods: {
-//     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-//     selectType(type) {
-//       if (type !== '-' && type !== '+'){
-//         throw new Error('type is unknown')
-//       }
-//       this.type = type
-//     }
-//   }
-// };
 </script>
 
 <style lang="scss" scoped>
