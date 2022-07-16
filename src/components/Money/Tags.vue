@@ -1,13 +1,13 @@
 <template>
   <div class="tags">
     <div class="new">
-      <button>新增标签</button>
+      <button @click="creat">新增标签</button>
     </div>
     <ul class="current">
       <!--      :class="{selected}给class属性，然后做selected的判断-->
       <li v-for="tag in dataSource" :key="tag"
           :class="{selected:selectedTags.indexOf(tag)>=0}"
-          @click="toggle(tag)">{{ tag }}
+          @click="toggle(tag)">{{tag}}
       </li>
     </ul>
   </div>
@@ -20,7 +20,7 @@ import {Component, Prop} from 'vue-property-decorator';
 @Component
 export default class Tags extends Vue {
   //让ts知道是字符串数组
-  @Prop() dataSource: string[] | undefined;
+  @Prop() readonly dataSource: string[] | undefined;
   selectedTags: string[] = [];
 
   toggle(tag: string) {
@@ -29,6 +29,18 @@ export default class Tags extends Vue {
       this.selectedTags.splice(index, 1);
     } else {
       this.selectedTags.push(tag);
+    }
+  }
+
+  creat() {
+    const name = window.prompt('请输入标签');
+    if (name === '') {
+      window.alert('标签不能为空');
+    } else if (this.dataSource) {
+      // if (this.dataSource) {
+      //   this.dataSource.push(name!);//不能改外部数据
+      // }
+      this.$emit('update:dataSource', [...this.dataSource, name]);
     }
   }
 }
