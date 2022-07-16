@@ -57,13 +57,14 @@ export default class NumberPad extends Vue {
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   clear() {
     this.output = '0';
   }
 
-  // ok() {
-  //
-  // }
+  ok() {
+    return
+  }
 }
 </script>
 
