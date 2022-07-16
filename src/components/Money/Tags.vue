@@ -4,18 +4,34 @@
       <button>新增标签</button>
     </div>
     <ul class="current">
-      <li>衣</li>
-      <li>食</li>
-      <li>住</li>
-      <li>行</li>
+      <!--      :class="{selected}给class属性，然后做selected的判断-->
+      <li v-for="tag in dataSource" :key="tag"
+          :class="{selected:selectedTags.indexOf(tag)>=0}"
+          @click="toggle(tag)">{{ tag }}
+      </li>
     </ul>
   </div>
 </template>
 
 <script lang="ts">
-export default {
-  name: 'Tags'
-};
+import Vue from 'vue';
+import {Component, Prop} from 'vue-property-decorator';
+
+@Component
+export default class Tags extends Vue {
+  //让ts知道是字符串数组
+  @Prop() dataSource: string[] | undefined;
+  selectedTags: string[] = [];
+
+  toggle(tag: string) {
+    const index = this.selectedTags.indexOf(tag);
+    if (index >= 0) {
+      this.selectedTags.splice(index, 1);
+    } else {
+      this.selectedTags.push(tag);
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -34,15 +50,21 @@ export default {
     flex-wrap: wrap;
 
     > li {
-      background: rgba(12, 153, 255, 1);
+      background: rgba(234, 236, 239, 1);
       $h: 24px;
       height: $h;
       border-radius: 18px;
       padding: 0 18px;
       margin-right: 12px;
-      color: white;
+      color: #333;
       line-height: $h;
-      margin-top: 4px;
+      margin-top: 8px;
+
+      &.selected {
+        background: #0c99ff;
+        box-shadow: 0 4px 10px rgba(12, 153, 255, 0.25);
+        color: white;
+      }
     }
   }
 
