@@ -7,7 +7,7 @@
       <!--      :class="{selected}给class属性，然后做selected的判断-->
       <li v-for="tag in dataSource" :key="tag"
           :class="{selected:selectedTags.indexOf(tag)>=0}"
-          @click="toggle(tag)">{{tag}}
+          @click="toggle(tag)">{{ tag }}
       </li>
     </ul>
   </div>
@@ -30,6 +30,7 @@ export default class Tags extends Vue {
     } else {
       this.selectedTags.push(tag);
     }
+    this.$emit('update:selected', this.selectedTags);
   }
 
   creat() {
