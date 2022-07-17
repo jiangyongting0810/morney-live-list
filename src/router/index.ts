@@ -26,7 +26,8 @@ const routes: Array<RouteConfig> = [
         component: Statistics,
     },
     {
-        path: '/labels/edit',
+        //:id表示后面会有字符串
+        path: '/labels/edit/:id',
         component: EditLabel,
     },
     {
