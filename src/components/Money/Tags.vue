@@ -5,9 +5,9 @@
     </div>
     <ul class="current">
       <!--      :class="{selected}给class属性，然后做selected的判断-->
-      <li v-for="tag in dataSource" :key="tag"
+      <li v-for="tag in dataSource" :key="tag.id"
           :class="{selected:selectedTags.indexOf(tag)>=0}"
-          @click="toggle(tag)">{{ tag }}
+          @click="toggle(tag)">{{ tag.name }}
       </li>
     </ul>
   </div>
