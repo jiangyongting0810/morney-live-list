@@ -6,7 +6,7 @@
       <span class="rightIcon"></span>
     </div>
     <div class="form-wrapper">
-      <FormItem field-name="标签名" placeholder="请输入标签名"/>
+      <FormItem :value="tag.name" field-name="标签名" placeholder="请输入标签名"/>
     </div>
     <div class='button-wrapper'>
       <Button>删除标签</Button>
@@ -25,6 +25,9 @@ import Button from '@/components/Button.vue';
   components: {Button, FormItem}
 })
 export default class EditLabel extends Vue {
+
+  tag?: { id: string, name: string } = undefined;
+
   created() {
     //this.$route来自vue.d.ts文件
     const id = this.$route.params.id;
@@ -33,7 +36,7 @@ export default class EditLabel extends Vue {
     //也可以用find
     const tag = tags.filter(t => t.id === id)[0];
     if (tag) {
-      console.log(tag);
+      this.tag = tag;
     } else {
 
       //防止用户退不了不用push
@@ -74,7 +77,8 @@ export default class EditLabel extends Vue {
   background: white;
   margin-top: 8px;
 }
-.button-wrapper{
+
+.button-wrapper {
   text-align: center;
   padding: 16px;
   margin-top: 44-16px;
