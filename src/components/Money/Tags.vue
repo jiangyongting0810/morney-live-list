@@ -53,6 +53,7 @@ export default class Tags extends Vue {
 .tags {
   //占满全部
   flex-grow: 1;
+  background: white;
   font-size: 14px;
   padding: 16px;
   display: flex;
