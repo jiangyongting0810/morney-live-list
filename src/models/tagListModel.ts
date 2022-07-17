@@ -1,8 +1,12 @@
 const localStorageKeyName = 'tagList';
+type Tag = {
+    id: string
+    name: string
+}
 type TagListModel = {
-    data: string[]
-    fetch: () => string[]
-    create: (name: string) => 'success'|'duplicated'
+    data: Tag[]
+    fetch: () => Tag[]
+    create: (name: string) => 'success' | 'duplicated'
     save: () => void
 }
 //关联上面的数据类型
@@ -10,10 +14,12 @@ const tagListModel: TagListModel = {
     data: [],
     create(name: string) {
         //判断标签是否重复
-        if (this.data.indexOf(name) >= 0) {
+        //this.data =[{id:'1',name:'1'},{id:'2',name:'2'}]
+        const names = this.data.map(item => item.name);
+        if (names.indexOf(name) >= 0) {
             return 'duplicated';
         }
-        this.data.push(name);
+        this.data.push({id:name,name:name});
         this.save();
         return 'success';
     },
