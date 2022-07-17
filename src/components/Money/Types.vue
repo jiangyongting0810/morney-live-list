@@ -1,10 +1,10 @@
 <template>
   <div>
     <ul class="types">
-      <li :class="type === '-'  && 'selected'"
+      <li :class="value === '-'  && 'selected'"
           @click="selectType('-')">支出
       </li>
-      <li :class="type === '+' &&'selected'"
+      <li :class="value === '+' &&'selected'"
           @click="selectType('+')">收入
       </li>
     </ul>
@@ -17,7 +17,7 @@ import {Component, Prop, Watch} from 'vue-property-decorator';
 
 @Component
 export default class Types extends Vue {
-  @Prop() readonly type!: string;
+  @Prop() readonly value!: string;
 
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   selectType(type: string) {
@@ -27,10 +27,6 @@ export default class Types extends Vue {
     this.$emit('update:value', type);
   }
 
-  @Watch('type')
-  onTypeChanged(value: string) {
-    this.$emit('update:value', value);
-  }
 }
 </script>
 
