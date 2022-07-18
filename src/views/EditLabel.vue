@@ -29,7 +29,7 @@ import Button from '@/components/Button.vue';
 export default class EditLabel extends Vue {
 
   tag?: { id: string, name: string } = undefined;
-
+  // 这个是钩子
   created() {
     //this.$route来自vue.d.ts文件
     const id = this.$route.params.id;
