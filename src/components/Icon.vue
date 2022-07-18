@@ -1,5 +1,6 @@
 <template>
-  <svg class="icon">
+<!--  透传知识-->
+  <svg class="icon" @click='$emit("click",$event)'>
     <use v-bind:xlink:href="'#'+name"/>
   </svg>
 </template>
