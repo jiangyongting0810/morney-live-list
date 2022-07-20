@@ -18,7 +18,7 @@ const tagListModel: TagListModel = {
         this.save();
         return 'success';
     },
-    update(id, name) {
+    update(id:string, name:string) {
         const idList = this.data.map(item => item.id);
         if (idList.indexOf(id) >= 0) {
             const names = this.data.map(item => item.name);
@@ -27,7 +27,6 @@ const tagListModel: TagListModel = {
             } else {
                 const tag = this.data.filter(item => item.id === id)[0];
                 tag.name = name;
-                tag.id = name;
                 this.save();
                 return 'success';
             }
