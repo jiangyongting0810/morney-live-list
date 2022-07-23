@@ -24,8 +24,15 @@ import {Component} from 'vue-property-decorator';
 import store from '@/store/index2';
 
 
+@Component({
+  components: {FormItem, Tags, Types, NumberPad},
+  computed: {
+    recordList() {
+      return store.recordList;
+    }
+  }
+})
 
-@Component({components: {FormItem, Tags, Types, NumberPad}})
 export default class Money extends Vue {
   tags = store.tagList;
   recordList = store.recordList;
@@ -46,7 +53,7 @@ export default class Money extends Vue {
   }
 
   saveRecord() {
-    store.creatRecord(this.record)
+    store.creatRecord(this.record);
   }
 
 }

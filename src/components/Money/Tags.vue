@@ -38,7 +38,9 @@ export default class Tags extends Vue {
   tags = store.tagList;
   creat() {
     const name = window.prompt('请输入标签');
-    if (name) {
+    if (!name){
+      window.alert("内容不能为空")
+    } else {
       store.createTag(name);
     }
   }
