@@ -1,11 +1,11 @@
 <template>
   <div class="tags">
     <div class="new">
-      <button @click="creat">新增标签</button>
+      <button @click="create">新增标签</button>
     </div>
     <ul class="current">
       <!--      :class="{selected}给class属性，然后做selected的判断-->
-      <li v-for="tag in dataSource" :key="tag.id"
+      <li v-for="tag in tagList" :key="tag.id"
           :class="{selected:selectedTags.indexOf(tag)>=0}"
           @click="toggle(tag)">{{ tag.name }}
       </li>
@@ -19,9 +19,8 @@ import {Component, Prop} from 'vue-property-decorator';
 
 @Component({
   computed: {
-    taglist() {
-      //TODO
-      return [];
+    tagList() {
+      return this.$store.state.tagList;
     }
   }
 })
@@ -29,8 +28,14 @@ export default class Tags extends Vue {
 
 
   //让ts知道是字符串数组
-  @Prop() readonly dataSource: string[] | undefined;
+
+  // @Prop() readonly dataSource: string[] | undefined;
+
   selectedTags: string[] = [];
+
+  created() {
+    this.$store.commit('fetchTags');
+  }
 
   toggle(tag: string) {
     const index = this.selectedTags.indexOf(tag);
@@ -44,13 +49,10 @@ export default class Tags extends Vue {
 
   // tags = store.tagList;
 
-  creat() {
+  create() {
     const name = window.prompt('请输入标签');
-    if (!name) {
-      window.alert('内容不能为空');
-    }
-    //TODO
-    // store.createTag(name);
+    if (!name) {window.alert('内容不能为空');}
+    this.$store.commit('createTag', name);
   }
 }
 </script>
