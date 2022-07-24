@@ -16,10 +16,17 @@
 <script lang="ts">
 import Vue from 'vue';
 import {Component, Prop} from 'vue-property-decorator';
-import store from '@/store/index2';
 
-@Component
+@Component({
+  computed: {
+    taglist() {
+      //TODO
+      return [];
+    }
+  }
+})
 export default class Tags extends Vue {
+
 
   //让ts知道是字符串数组
   @Prop() readonly dataSource: string[] | undefined;
@@ -35,27 +42,16 @@ export default class Tags extends Vue {
     this.$emit('update:selected', this.selectedTags);
   }
 
-  tags = store.tagList;
+  // tags = store.tagList;
+
   creat() {
     const name = window.prompt('请输入标签');
-    if (!name){
-      window.alert("内容不能为空")
-    } else {
-      store.createTag(name);
+    if (!name) {
+      window.alert('内容不能为空');
     }
+    //TODO
+    // store.createTag(name);
   }
-
-  // creat() {
-  //   const name = window.prompt('请输入标签');
-  //   if (name === '') {
-  //     window.alert('标签不能为空');
-  //   } else if (this.dataSource) {
-  //     // if (this.dataSource) {
-  //     //   this.dataSource.push(name!);//不能改外部数据
-  //     // }
-  //     this.$emit('update:dataSource', [...this.dataSource, name]);
-  //   }
-  // }
 }
 </script>
 
