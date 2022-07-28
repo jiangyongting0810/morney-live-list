@@ -32,14 +32,14 @@ import Tabs from '@/components/Tabs.vue';
 })
 
 export default class Money extends Vue {
-  recordTypeList = recordTypeList;
-
   get recordList() {
     return this.$store.state.recordList;
   }
 
-  record: RecordItem = {
-    tags: [], notes: '', type: '-', amount: 0
+  recordTypeList = recordTypeList;
+
+   record: RecordItem = {
+    tags:[], notes: '', type: '-', amount: 0
   };
   created(){
     this.$store.commit('fetchRecords')

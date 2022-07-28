@@ -18,11 +18,11 @@ const recordStore = {
         saveRecords() {
             window.localStorage.setItem(localStorageKeyName, JSON.stringify(this.recordList));
         },
-        creatRecord (record: RecordItem) {
+        creatRecord(record: RecordItem) {
             const record2: RecordItem = clone(record);
             record2.createdAt = new Date().toISOString();
             //data存在才能push
-            this.recordList&&this.recordList.push(record2);
+            this.recordList && this.recordList.push(record2);
             recordStore.saveRecords();
         }
     }

@@ -9,14 +9,12 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
     state: {
-        recordList: [] as RecordItem[],
-        tagList: [] as Tag[],
+        recordList: [] ,
+        tagList: [] ,
         currentTag: undefined
-    },
+    }as RootState,
     mutations: {
         setCurrentTag(state, id: string) {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
             state.currentTag = state.tagList.filter(t => t.id === id)[0];
 
         },
